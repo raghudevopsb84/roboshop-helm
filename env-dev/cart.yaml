@@ -3,4 +3,6 @@ containerPort: 8080
 serviceType: ClusterIP
 configMap_data:
   x: "100"
+  y: "100"
+  z: "100"
 
