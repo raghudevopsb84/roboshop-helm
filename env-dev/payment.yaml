@@ -1,0 +1,3 @@
+appName: payment
+containerPort: 8080
+
