@@ -1,4 +1,4 @@
 appName: user
 containerPort: 8080
-
+serviceType: ClusterIP
 
