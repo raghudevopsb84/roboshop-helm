@@ -2,7 +2,7 @@ appName: cart
 containerPort: 8080
 serviceType: ClusterIP
 configMap_data:
-  x: "100"
-  y: "100"
-  z: "100"
+  x1: "100"
+  y1: "100"
+  z1: "100"
 
