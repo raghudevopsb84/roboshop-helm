@@ -1,3 +1,4 @@
 install:
-	helm install $(appName) . -f env-dev/$(appName).yaml
+	git pull
+	helm upgrade -i $(appName) . -f env-dev/$(appName).yaml
 
