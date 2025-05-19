@@ -1,4 +1,8 @@
 appName: user
 containerPort: 8080
 serviceType: ClusterIP
+configMap_data:
+  MONGO: true
+  MONGO_URL: "mongodb://mongodb-dev.azdevopsb84.online:27017/users"
+  REDIS_URL: "redis://redis-dev.azdevopsb84.online:6379"
 
