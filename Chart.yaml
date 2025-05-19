@@ -1,0 +1,4 @@
+apiVersion: v2
+name: roboshop
+version: 1.0.0
+
