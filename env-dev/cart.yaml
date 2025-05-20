@@ -4,5 +4,5 @@ serviceType: ClusterIP
 configMap_data:
   CATALOGUE_HOST: catalogue
   CATALOGUE_PORT: "8080"
-  REDIS_HOST: redis-dev.azdevopsb84.online
+  REDIS_HOST: redis-dev.rdevopsb84.online
 
