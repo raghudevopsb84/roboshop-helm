@@ -11,9 +11,11 @@ configMap_data:
 db_job:
   enabled: true
   ext: sql
-  jobs:
-    - master-data
+  initJobs:
     - schema
     - app-user
+  jobs:
+    - master-data
+
 
 
