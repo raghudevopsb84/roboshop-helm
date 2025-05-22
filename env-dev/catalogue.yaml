@@ -13,3 +13,12 @@ db_job:
   jobs:
     - master-data
 
+
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "30m"
+  limits:
+    memory: "128Mi"
+    cpu: "100m"
+

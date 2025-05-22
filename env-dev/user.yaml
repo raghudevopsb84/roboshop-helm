@@ -5,3 +5,13 @@ configMap_data:
   MONGO_URL: "mongodb://mongodb-dev.rdevopsb84.online:27017/users"
   REDIS_URL: "redis://redis-dev.rdevopsb84.online:6379"
 
+
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "30m"
+  limits:
+    memory: "128Mi"
+    cpu: "100m"
+
+
