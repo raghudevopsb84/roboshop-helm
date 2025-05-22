@@ -1,6 +1,8 @@
+env: dev
 appName: cart
 configMap_data:
   CATALOGUE_HOST: catalogue
   CATALOGUE_PORT: "8080"
   REDIS_HOST: redis-dev.rdevopsb84.online
+
 
