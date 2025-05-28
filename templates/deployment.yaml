@@ -19,12 +19,12 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: kubernetes.azure.com/agentpool
+              - key: project/name
                 operator: In
                 values:
-                - one
+                - roboshop
       topologySpreadConstraints:
-        - topologyKey: kubernetes.azure.com/agentpool
+        - topologyKey: project/name
           maxSkew: 1
           whenUnsatisfiable: DoNotSchedule
           labelSelector:
