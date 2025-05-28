@@ -14,6 +14,15 @@ spec:
       labels:
         app: {{ .Values.appName }}
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.azure.com/agentpool
+                operator: In
+                values:
+                - one
       topologySpreadConstraints:
         - topologyKey: kubernetes.azure.com/agentpool
           maxSkew: 1
