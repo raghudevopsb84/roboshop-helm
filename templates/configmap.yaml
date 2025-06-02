@@ -4,6 +4,8 @@ metadata:
   name: {{ .Values.appName }}
   labels:
     app: {{ .Values.appName }}
+  annotations:
+    "helm.sh/hook": pre-install
 data:
   {{- range $key, $val := .Values.configMap_data }}
   {{ $key }}: {{ $val | quote }}
