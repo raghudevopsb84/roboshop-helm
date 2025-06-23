@@ -1,4 +1,4 @@
-name: Dev - Apply
+name: Helm - Apply
 on: [workflow_dispatch]
 jobs:
   TerraformApply:
