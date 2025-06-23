@@ -1,0 +1,30 @@
+name: Dev - Destroy
+on: [workflow_dispatch]
+jobs:
+  TerraformDestroy:
+    runs-on: self-hosted
+    env:
+      vault_token: ${{ secrets.vault_token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import Secrets
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: http://vault-int.rdevopsb84.online:8200/
+          token: ${{ secrets.vault_token }}
+          secrets: |
+            roboshop-infra/data/azure-sp ARM_CLIENT_ID | ARM_CLIENT_ID ;
+            roboshop-infra/data/azure-sp ARM_CLIENT_SECRET | ARM_CLIENT_SECRET ;
+            roboshop-infra/data/azure-sp ARM_TENANT_ID | ARM_TENANT_ID ;
+            roboshop-infra/data/azure-sp ARM_SUBSCRIPTION_ID | ARM_SUBSCRIPTION_ID ;
+      - name: Terraform Destroy
+        run: |
+           cd infra-helm-charts
+           export ARM_CLIENT_ID="${{ env.ARM_CLIENT_ID }}"
+           export ARM_CLIENT_SECRET="${{ env.ARM_CLIENT_SECRET }}"
+           export ARM_TENANT_ID="${{ env.ARM_TENANT_ID }}"
+           export ARM_SUBSCRIPTION_ID="${{ env.ARM_SUBSCRIPTION_ID }}"
+           make dev-destroy token=${vault_token}
+
+
