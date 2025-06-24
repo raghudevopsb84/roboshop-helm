@@ -34,6 +34,10 @@ resource "null_resource" "external-secrets-secret-store" {
     helm_release.external-secrets
   ]
 
+  triggers = {
+    time = timestamp()
+  }
+
   provisioner "local-exec" {
     command = <<TF
 kubectl apply -f - <<KUBE
