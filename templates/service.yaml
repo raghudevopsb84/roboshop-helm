@@ -6,6 +6,8 @@ spec:
   type: {{ .Values.serviceType }}
   selector:
     app: {{ .Values.appName }}
+  annotations:
+    "helm.sh/hook": pre-install
   ports:
     - name: http
       protocol: TCP
