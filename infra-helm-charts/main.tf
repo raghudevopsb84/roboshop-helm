@@ -91,6 +91,7 @@ resource "helm_release" "filebeat" {
   chart      = "filebeat"
   namespace  = "devops"
   wait       = "false"
+  create_namespace = true
 
   values = [
     file("${path.module}/helm-values/filebeat.yml")
@@ -106,6 +107,7 @@ resource "helm_release" "prometheus" {
   chart      = "kube-prometheus-stack"
   namespace  = "devops"
   wait       = "false"
+  create_namespace = true
 
   values = [
     file("${path.module}/helm-values/prometheus.yml")
