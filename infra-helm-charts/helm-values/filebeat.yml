@@ -14,6 +14,29 @@ daemonset:
             matchers:
             - logs_path:
                 logs_path: "/var/log/containers/"
+        - drop_event:
+            when:
+              or:
+                - equals:
+                    kubernetes.labels.app: "shipping"
+      - type: container
+        paths:
+          - /var/log/containers/*app_shipping*.log
+        processors:
+        - add_kubernetes_metadata:
+            host: ${NODE_NAME}
+            matchers:
+              - logs_path:
+                  logs_path: "/var/log/containers/"
+        - drop_event:
+            when:
+              not:
+                equals:
+                  kubernetes.labels.app: "shipping"
+        multiline.type: pattern
+        multiline.pattern: "^[0-9][0-9][0-9][0-9]"
+        multiline.negate: true
+        multiline.match: after
       output.logstash:
         hosts: 'elk-stack-int.rdevopsb84.online:5044'
 
