@@ -21,10 +21,10 @@ db_job:
 
 resources:
   requests:
-    memory: "2048Mi"
+    memory: "3100Mi"
     cpu: "1000m"
   limits:
-    memory: "3000Mi"
+    memory: "4000Mi"
     cpu: "1200m"
 
 
