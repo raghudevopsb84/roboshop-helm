@@ -48,10 +48,10 @@ spec:
         livenessProbe:
           httpGet:
             path: /health
-            port: {{ .Values.probes.liveness.initialDelaySeconds }}
+            port: {{ .Values.containerPort }}
           failureThreshold: 1
           periodSeconds: 10
-          initialDelaySeconds: 100
+          initialDelaySeconds: {{ .Values.probes.liveness.initialDelaySeconds }}
         readinessProbe:
           httpGet:
             path: /health
