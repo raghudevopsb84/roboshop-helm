@@ -6,3 +6,4 @@ serviceType: ClusterIP
 
 minReplicas: 2
 maxReplicas: 10
+

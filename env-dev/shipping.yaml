@@ -32,5 +32,6 @@ probes:
   readiness:
     initialDelaySeconds: 60
 
+minReplicas: 3
 
 
