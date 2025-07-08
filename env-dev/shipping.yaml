@@ -18,7 +18,6 @@ db_job:
   jobs:
     - master-data
 
-
 resources:
   requests:
     memory: "3100Mi"
@@ -27,6 +26,11 @@ resources:
     memory: "4000Mi"
     cpu: "1200m"
 
+probes:
+  liveness:
+    initialDelaySeconds: 60
+  readiness:
+    initialDelaySeconds: 60
 
 
 

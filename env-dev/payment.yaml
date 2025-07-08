@@ -18,4 +18,9 @@ resources:
     memory: "128Mi"
     cpu: "100m"
 
+probes:
+  liveness:
+    initialDelaySeconds: 30
+  readiness:
+    initialDelaySeconds: 30
 
