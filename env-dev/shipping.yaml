@@ -34,4 +34,5 @@ probes:
 
 minReplicas: 3
 
+log_type: raw
 
