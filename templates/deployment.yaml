@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.appName }}
+        log_type: {{ .Values.log_type }}
     spec:
       affinity:
         nodeAffinity:
