@@ -6,6 +6,12 @@ metadata:
     app: {{ .Values.appName }}
     log_type: {{ .Values.log_type }}
 spec:
+  minReadySeconds: 60
+  strategy:
+   type: RollingUpdate
+   rollingUpdate:
+     maxUnavailable: 0
+     maxSurge: 1
   replicas: {{ .Values.minReplicas }}
   selector:
     matchLabels:
