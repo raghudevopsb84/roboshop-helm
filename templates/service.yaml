@@ -4,10 +4,12 @@ metadata:
   name: {{ .Values.appName }}
   annotations:
     "helm.sh/hook": pre-install
+    "helm.sh/hook-delete-policy": hook-failed
 spec:
   type: {{ .Values.serviceType }}
   selector:
     app: {{ .Values.appName }}
+
   ports:
     - name: http
       protocol: TCP
