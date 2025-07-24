@@ -120,7 +120,10 @@ resource "helm_release" "filebeat" {
 ## Prometheus Stack Helm Chart
 resource "helm_release" "prometheus" {
 
-  depends_on = [null_resource.kubeconfig]
+  depends_on = [
+    null_resource.kubeconfig,
+    null_resource.nginx-ingress
+  ]
   name       = "prom-stack"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
