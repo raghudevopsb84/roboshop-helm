@@ -1,0 +1,6 @@
+server:
+  ingress:
+    enabled: true
+    ingressClassName: "nginx"
+    hostname: "argocd-dev.rdevopsb84.online"
+
