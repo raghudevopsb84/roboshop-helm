@@ -4,3 +4,8 @@ server:
     ingressClassName: "nginx"
     hostname: "argocd-dev.rdevopsb84.online"
 
+configs:
+  params:
+    server.insecure: true
+
+
