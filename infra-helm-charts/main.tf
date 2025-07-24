@@ -115,6 +115,12 @@ resource "helm_release" "prometheus" {
   values = [
     file("${path.module}/helm-values/prometheus.yml")
   ]
+  set = [
+    {
+      name  = "prometheus.ingress.hosts"
+      value = ["prometheus-${var.env}.rdevopsb84.online"]
+    }
+  ]
 }
 
 # Direct Helm Chart is a Problem - https://github.com/kubernetes/ingress-nginx/issues/10863
