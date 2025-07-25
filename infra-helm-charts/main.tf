@@ -203,4 +203,27 @@ resource "helm_release" "cert-manager" {
   ]
 }
 
-
+resource "null_resource" "cert-manager" {
+  depends_on = [null_resource.kubeconfig, helm_release.cert-manager]
+  provisioner "local-exec" {
+    command = <<EOT
+cat <<-EOF > ${path.module}/issuer.yml
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    email: raghudevopsb84@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+EOF
+kubectl apply -f ${path.module}/issuer.yml
+EOT
+  }
+}
