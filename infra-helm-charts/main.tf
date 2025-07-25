@@ -158,7 +158,7 @@ resource "null_resource" "external-dns-secret" {
 echo '{
   "tenantId": "'"${data.vault_generic_secret.azure-sp.data["ARM_TENANT_ID"]}"'",
   "subscriptionId": "'"${data.vault_generic_secret.azure-sp.data["ARM_SUBSCRIPTION_ID"]}"'",
-  "resourceGroup": "MyDnsResourceGroup",
+  "resourceGroup": "project-setup-1",
   "aadClientId": "'"${data.vault_generic_secret.azure-sp.data["ARM_CLIENT_ID"]}"'",
   "aadClientSecret": "'"${data.vault_generic_secret.azure-sp.data["ARM_CLIENT_SECRET"]}"'"
 }' >${path.module}/azure.json
