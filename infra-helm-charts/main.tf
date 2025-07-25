@@ -162,6 +162,7 @@ echo '{
   "aadClientId": "'"${data.vault_generic_secret.azure-sp.data["ARM_CLIENT_ID"]}"'",
   "aadClientSecret": "'"${data.vault_generic_secret.azure-sp.data["ARM_CLIENT_SECRET"]}"'"
 }' >/tmp/azure.json
+kubectl create secret generic azure-config-file --namespace "devops" --from-file /tmp/azure.json
 EOF
   }
 
