@@ -156,12 +156,12 @@ resource "null_resource" "external-dns-secret" {
   provisioner "local-exec" {
     command = <<EOF
 echo '{
-  "tenantId": "'"$AZURE_GUID"'",
-  "subscriptionId": "'"$AZURE_GUID"'",
+  "tenantId": "'"${data.vault_generic_secret.azure-sp.data["ARM_TENANT_ID"]}"'",
+  "subscriptionId": "'"${data.vault_generic_secret.azure-sp.data["ARM_SUBSCRIPTION_ID"]}"'",
   "resourceGroup": "MyDnsResourceGroup",
-  "aadClientId": "'"$AZURE_GUID"'",
-  "aadClientSecret": "uKiuXeiwui4jo9quae9o"
-}' >/tmp/azure.json
+  "aadClientId": "'"${data.vault_generic_secret.azure-sp.data["ARM_CLIENT_ID"]}"'",
+  "aadClientSecret": "'"${data.vault_generic_secret.azure-sp.data["ARM_CLIENT_SECRET"]}"'"
+}' >${path.module}/azure.json
 EOF
   }
 
