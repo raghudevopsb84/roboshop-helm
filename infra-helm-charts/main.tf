@@ -183,7 +183,7 @@ resource "helm_release" "external-dns" {
 }
 
 
-resource "helm_release" "external-dns" {
+resource "helm_release" "cert-manager" {
 
   depends_on = [
     null_resource.kubeconfig,
