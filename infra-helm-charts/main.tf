@@ -161,7 +161,7 @@ echo '{
   "resourceGroup": "project-setup-1",
   "aadClientId": "'"${data.vault_generic_secret.azure-sp.data["ARM_CLIENT_ID"]}"'",
   "aadClientSecret": "'"${data.vault_generic_secret.azure-sp.data["ARM_CLIENT_SECRET"]}"'"
-}' >${path.module}/azure.json
+}' >/tmp/azure.json
 EOF
   }
 
