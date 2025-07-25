@@ -183,3 +183,24 @@ resource "helm_release" "external-dns" {
 }
 
 
+resource "helm_release" "external-dns" {
+
+  depends_on = [
+    null_resource.kubeconfig,
+    null_resource.nginx-ingress
+  ]
+  name       = "cert-manager"
+  repository = "https://charts.jetstack.io"
+  chart      = "cert-manager"
+  namespace  = "devops"
+  wait       = "false"
+  create_namespace = true
+  set = [
+    {
+      name  = "crds.enabled"
+      value = "true"
+    }
+  ]
+}
+
+
