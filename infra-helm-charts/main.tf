@@ -142,4 +142,43 @@ resource "helm_release" "prometheus" {
   ]
 }
 
+## External DNS Helm chart
+resource "null_resource" "external-dns-secret" {
+  depends_on = [
+    null_resource.kubeconfig,
+    null_resource.nginx-ingress
+  ]
+
+  triggers = {
+    always = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command = <<EOF
+echo '{
+  "tenantId": "'"$AZURE_GUID"'",
+  "subscriptionId": "'"$AZURE_GUID"'",
+  "resourceGroup": "MyDnsResourceGroup",
+  "aadClientId": "'"$AZURE_GUID"'",
+  "aadClientSecret": "uKiuXeiwui4jo9quae9o"
+}' >/tmp/azure.json
+EOF
+  }
+
+}
+
+# resource "helm_release" "external-dns" {
+#
+#   depends_on = [
+#     null_resource.kubeconfig,
+#     null_resource.nginx-ingress
+#   ]
+#   name       = "external-dns"
+#   repository = "https://kubernetes-sigs.github.io/external-dns/"
+#   chart      = "external-dns"
+#   namespace  = "devops"
+#   wait       = "false"
+#   create_namespace = true
+# }
+
 
