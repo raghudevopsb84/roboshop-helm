@@ -149,10 +149,6 @@ resource "null_resource" "external-dns-secret" {
     null_resource.nginx-ingress
   ]
 
-  triggers = {
-    always = timestamp()
-  }
-
   provisioner "local-exec" {
     command = <<EOF
 echo '{
