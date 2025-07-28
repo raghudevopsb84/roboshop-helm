@@ -5,6 +5,10 @@ metadata:
   name: {{ .Values.appName }}
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - {{ .Values.ingress.host }}
+    secretName: {{ .Values.appName }}-{{ .Values.env }}-tls
   rules:
     - host: {{ .Values.ingress.host }}
       http:
