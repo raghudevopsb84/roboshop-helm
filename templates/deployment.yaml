@@ -67,4 +67,6 @@ spec:
           failureThreshold: 1
           periodSeconds: 10
           initialDelaySeconds: {{ .Values.probes.readiness.initialDelaySeconds }}
+        securityContext:
+          allowPrivilegeEscalation: false
 
