@@ -41,9 +41,6 @@ spec:
       containers:
       - name: {{ .Values.appName }}
         image: roboshopb84.azurecr.io/roboshop-{{ .Values.appName }}:{{ .Values.appTag }}
-        securityContext:
-          readOnlyRootFilesystem: true
-          allowPrivilegeEscalation: false
         ports:
         - containerPort: {{ .Values.containerPort }}
         envFrom:
@@ -72,4 +69,5 @@ spec:
           initialDelaySeconds: {{ .Values.probes.readiness.initialDelaySeconds }}
         securityContext:
           allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
 
