@@ -22,6 +22,11 @@ spec:
         app: {{ .Values.appName }}
         log_type: {{ .Values.log_type }}
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 3000
+        fsGroup: 2000
+        supplementalGroups: [4000]
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
