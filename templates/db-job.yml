@@ -16,6 +16,7 @@ spec:
       containers:
       - name: db-job
         image: roboshopb84.azurecr.io/roboshop-{{ .Values.appName }}-db-job:latest
+        imagePullPolicy: Always
         envFrom:
           - secretRef:
               name: {{ .Values.appName }}
