@@ -43,6 +43,7 @@ spec:
         image: roboshopb84.azurecr.io/roboshop-{{ .Values.appName }}:{{ .Values.appTag }}
         securityContext:
           readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: {{ .Values.containerPort }}
         envFrom:
