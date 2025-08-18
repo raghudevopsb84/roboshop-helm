@@ -227,3 +227,31 @@ kubectl apply -f ${path.module}/issuer.yml
 EOT
   }
 }
+
+resource "helm_release" "istio-base" {
+  depends_on = [
+    null_resource.kubeconfig
+  ]
+
+  name             = "istio-base"
+  repository       = "https://istio-release.storage.googleapis.com/charts"
+  chart            = "base"
+  namespace        = "istio-system"
+  create_namespace = true
+}
+
+resource "helm_release" "istiod" {
+  depends_on = [
+    null_resource.kubeconfig,
+    helm_release.istio-base
+  ]
+
+  name             = "istiod"
+  repository       = "https://istio-release.storage.googleapis.com/charts"
+  chart            = "istiod"
+  namespace        = "istio-system"
+  create_namespace = true
+  version          = "1.27"
+}
+
+
