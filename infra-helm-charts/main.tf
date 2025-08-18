@@ -251,7 +251,7 @@ resource "helm_release" "istiod" {
   chart            = "istiod"
   namespace        = "istio-system"
   create_namespace = true
-  version          = "1.27"
+  version          = "1.27.0"
 }
 
 
