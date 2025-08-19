@@ -257,7 +257,8 @@ resource "helm_release" "istiod" {
 resource "null_resource" "kiali" {
   depends_on = [
     null_resource.kubeconfig,
-    helm_release.istiod
+    helm_release.istiod,
+    null_resource.nginx-ingress
   ]
   provisioner "local-exec" {
     command = <<EOF
