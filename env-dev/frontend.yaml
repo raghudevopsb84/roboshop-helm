@@ -33,6 +33,8 @@ ingress:
   enabled: true
   host: frontend-dev.rdevopsb84.online
 
+istio:
+  principals: ["cluster.local/ns/ingress-nginx/sa/ingress-nginx"]
 
 
 
