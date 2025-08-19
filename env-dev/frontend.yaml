@@ -35,6 +35,7 @@ ingress:
 
 istio:
   principals: ["cluster.local/ns/ingress-nginx/sa/ingress-nginx"]
-
+  auth_policy:
+    enabled: false
 
 

@@ -10,3 +10,7 @@ maxReplicas: 10
 ingress:
   enabled: false
 
+istio:
+  auth_policy:
+    enabled: true
+
