@@ -8,9 +8,10 @@ metadata:
   annotations:
     "helm.sh/hook": pre-install
     "helm.sh/hook-delete-policy": hook-failed
-    sidecar.istio.io/inject: "false"
 spec:
   template:
+    metadata:
+      sidecar.istio.io/inject: "false"
     spec:
       securityContext:
         runAsUser: 1000
