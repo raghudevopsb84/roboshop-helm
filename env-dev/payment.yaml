@@ -26,3 +26,6 @@ probes:
 
 log_type: raw
 
+istio:
+  principals: ["cluster.local/ns/app/sa/frontend"]
+
