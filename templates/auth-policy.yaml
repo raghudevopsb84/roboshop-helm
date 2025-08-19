@@ -4,6 +4,9 @@ kind: AuthorizationPolicy
 metadata:
   name: {{ .Values.appName }}-allow
 spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
   action: ALLOW
   rules:
   - from:
