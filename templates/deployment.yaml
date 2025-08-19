@@ -46,6 +46,7 @@ spec:
           labelSelector:
             matchLabels:
               app: {{ .Values.appName }}
+      serviceAccountName: {{ .Values.appName }}
       containers:
       - name: {{ .Values.appName }}
         image: roboshopb84.azurecr.io/roboshop-{{ .Values.appName }}:{{ .Values.appTag }}
