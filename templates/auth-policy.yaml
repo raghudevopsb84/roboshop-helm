@@ -11,8 +11,9 @@ spec:
   rules:
   - from:
     - source:
-        principals: {{ .Values.istio.principals }}
-
-
+        {{- range .Values.istio.principals }}
+        principals:
+          - {{ . }}
+        {{- end }}
 {{ end }}
 
