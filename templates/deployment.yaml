@@ -27,9 +27,9 @@ spec:
           emptyDir: {}
       securityContext:
         runAsUser: 1001
-        runAsGroup: 3000
-        fsGroup: 2000
-        supplementalGroups: [4000]
+        runAsGroup: 1001
+        fsGroup: 1001
+        supplementalGroups: [1001]
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
